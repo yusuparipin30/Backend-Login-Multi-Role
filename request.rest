@@ -1,0 +1,56 @@
+//Create a user
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name" : "Yusuf ad",
+    "email": "mahes@gmail.com",
+    "password": "123456",
+    "confPassword": "123456",
+    "role": "admin"
+}
+
+###
+//get All Users
+GET http://localhost:5000/users
+
+###
+//Get Single User
+GET http://localhost:5000/users/fc297296-e77f-4242-a977-5ff8a651c928
+
+###
+//User Update
+PATCH http://localhost:5000/users/b3767cac-a121-4969-bf15-74e59ff82d69
+Content-Type: application/json
+
+{
+    "name" : "Yusuf AR",
+    "email": "admin@gmail.com",
+    "password": "",
+    "confPassword": "",
+    "role": "admin"
+}
+
+###
+//delete a user
+DELETE http://localhost:5000/users/fc297296-e77f-4242-a977-5ff8a651c928
+
+###
+//login user
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "mahes@gmail.com",
+    "password": "123456"
+}
+
+###
+//me
+GET http://localhost:5000/me
+
+###
+//logout
+DELETE http://localhost:5000/logout
+
+

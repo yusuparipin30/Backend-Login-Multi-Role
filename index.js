@@ -12,14 +12,19 @@ dotenv.config();
 import UserRoute from "./routes/UserRoute.js"
 //12.
 import MemberRoute from "./routes/MemberRoute.js"
-//15.
+/*15. import db agar dapat sync modalnya untuk mengenerate tabelnya 
+secara otomatis dan setelah tergenerate  non aktifkan kmbali import db dan sync nya karna telah membuat tabel secara otomatis*/
 //import db from "./config/Database.js";
+//16. import AuthRoute
+import AuthRoute from "./routes/AuthRoute.js";
+//18.
+import SequelizeStore from "connect-session-sequelize";
 
 
 //4. buat variabel app express function
 const app = express();
 
-//16. sinc
+//16.function sinc untuk mengeksekusi query untuk membuat tabel user dan member secara otomatis
 // (async()=>{
 //     await db.sync()
 // })();
@@ -49,6 +54,8 @@ app.use(express.json());
 app.use(UserRoute);
 //14.
 app.use(MemberRoute);
+//17.
+app.use(AuthRoute);
 //5. membuat port pesan mengambil dari envimen variable, buat file .env
 app.listen(process.env.APP_PORT, ()=>{
     console.log('Server up and running...');
