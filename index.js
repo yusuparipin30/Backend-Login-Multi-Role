@@ -14,16 +14,22 @@ import UserRoute from "./routes/UserRoute.js"
 import MemberRoute from "./routes/MemberRoute.js"
 /*15. import db agar dapat sync modalnya untuk mengenerate tabelnya 
 secara otomatis dan setelah tergenerate  non aktifkan kmbali import db dan sync nya karna telah membuat tabel secara otomatis*/
-//import db from "./config/Database.js";
+import db from "./config/Database.js";
 //16. import AuthRoute
 import AuthRoute from "./routes/AuthRoute.js";
-//18.
+//18. mnyimpan session ke database,lalu aktifkan import db
 import SequelizeStore from "connect-session-sequelize";
 
 
 //4. buat variabel app express function
 const app = express();
 
+//19.function untuk membuat & menyimpan session kedatabase 
+const sessionStore = SequelizeStore(session.Store);
+const store = new sessionStore({
+    // databasenya mengambil dari koneksi db
+    db:db
+});
 //16.function sinc untuk mengeksekusi query untuk membuat tabel user dan member secara otomatis
 // (async()=>{
 //     await db.sync()
@@ -34,6 +40,8 @@ app.use(session({
     secret: process.env.SESS_SECRET,
     resave: false,
     saveUninitialized: true,
+    //20. membuat session opsi. store, mengambil dr store pada variabel store pada no 19
+    store: store,
     cookie: {
         secure: 'auto'
     }
@@ -56,6 +64,11 @@ app.use(UserRoute);
 app.use(MemberRoute);
 //17.
 app.use(AuthRoute);
+
+
+//21.membuat table session
+//store.sync(); //22. apabila telah selesai membuat tabel session maka non aktifkan store.sync();, kanrna tabel telah terbuat
+
 //5. membuat port pesan mengambil dari envimen variable, buat file .env
 app.listen(process.env.APP_PORT, ()=>{
     console.log('Server up and running...');

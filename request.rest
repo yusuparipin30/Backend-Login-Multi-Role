@@ -3,8 +3,8 @@ POST http://localhost:5000/users
 Content-Type: application/json
 
 {
-    "name" : "Yusuf ad",
-    "email": "mahes@gmail.com",
+    "name" : "Yeyen ad",
+    "email": "yeyen@gmail.com",
     "password": "123456",
     "confPassword": "123456",
     "role": "admin"
@@ -20,15 +20,15 @@ GET http://localhost:5000/users/fc297296-e77f-4242-a977-5ff8a651c928
 
 ###
 //User Update
-PATCH http://localhost:5000/users/b3767cac-a121-4969-bf15-74e59ff82d69
+PATCH http://localhost:5000/users/6f69c6bf-025d-4490-bffc-427bd2538bef
 Content-Type: application/json
 
 {
-    "name" : "Yusuf AR",
-    "email": "admin@gmail.com",
+    "name" : "maisara",
+    "email": "maisara@gmail.com",
     "password": "",
     "confPassword": "",
-    "role": "admin"
+    "role": "user"
 }
 
 ###
@@ -41,7 +41,17 @@ POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "email": "mahes@gmail.com",
+    "email": "yeyen@gmail.com",
+    "password": "123456"
+}
+
+###
+//login user
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "maisara@gmail.com",
     "password": "123456"
 }
 
