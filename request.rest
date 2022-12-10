@@ -64,3 +64,44 @@ GET http://localhost:5000/me
 DELETE http://localhost:5000/logout
 
 
+###
+//get all Member
+GET http://localhost:5000/member
+
+###
+//get single Member
+GET http://localhost:5000/member/6f4c1e5a-7707-46cb-b0d1-1f133bba1e70
+
+###
+//POST data Member
+POST http://localhost:5000/member
+Content-Type: application/json
+
+{
+            "name": "Mahes",
+            "address":"B01NO11",
+            "gender":"Male",
+            "marital_sts":"Belum",
+            "category_people":"Anak-anak",
+            "active_state":"Aktif"
+}
+
+###
+//POST data Member
+PATCH  http://localhost:5000/member/faa9b156-7524-4d15-a184-c9a386f6a8fa
+Content-Type: application/json
+
+{
+         "name": "Yeyen",
+    "address": "B01NO11",
+    "gender": "Female",
+    "marital_sts": "Sudah",
+    "category_people": "Dewasa",
+    "active_state": "Aktif"
+}
+
+###
+DELETE http://localhost:5000/member/55d32070-5f63-4243-8291-e44e5369eaf0
+
+
+

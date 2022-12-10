@@ -8,17 +8,18 @@ import {
     updateMember,
     deleteMember
 } from "../controllers/Member.js";
-
+//6. import verifyUser yang dr midleware karena ingin member hanya bisa di akses oleh user yang login
+import {verifyUser} from "../middleware/AuthUser.js";
 
 //2.
 const router = express.Router();
 
 //5. buat beberapa route
-router.get('/member', getMember);
-router.get('/member/:id', getMemberById);
-router.post('/member', createMember);
-router.patch('/member/:id',updateMember);
-router.delete('/member/:id', deleteMember);
+router.get('/member',verifyUser, getMember);
+router.get('/member/:id',verifyUser, getMemberById);
+router.post('/member',verifyUser, createMember);
+router.patch('/member/:id',verifyUser, updateMember);
+router.delete('/member/:id',verifyUser, deleteMember);
 
 //3.
 export default router;
